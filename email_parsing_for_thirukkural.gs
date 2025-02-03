@@ -104,7 +104,7 @@ function parseAllMyComments(body) {
   var comments = [];
 
   // Updated regex to capture name, email, and phone numbers
-  var regex = /My\s*Comment[:\s]*(?:(?:Name:\s*)?([A-Za-z]+(?:\s+[A-Za-z]+)*))?[\s,;:\/-]*(?:(?:email[:\s]*)?([\w.\-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}))?[\s,\/-]*(?:(?:phone|number|contact|[:\s]*)?((?:\+?\d{1,4}[\s-]?)?(?:\d{3}[-\s]?\d{3}[-\s]?\d{4})(?:[\s,]+)?(?:\+?\d{1,4}[\s-]?\d{3}[-\s]?\d{3}[-\s]?\d{4})?))?/gi;
+  var regex = /My\s*Comment[:\s]*(?:(?:Name:\s*)?([A-Za-z]+(?:\s+[A-Za-z]+)*))?[\s,;:\/-]*(?:(?:email[:\s]*)?([\w.\-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}))?[\s,\/-]*(?:(?:phone|number|contact|[:\s]*)?((?:\+?\d{1,4}[\s-]?)?(?:\d{3}[-\s]?\d{3}[-\s]?\d{4})(?:[\s,]+)?(?:\+?\d{1,4}[\s-]?\d{3}[-\s]?\d{3}[-\s]?\d{4})?))?/g;
 
   var match;
 
@@ -195,7 +195,7 @@ function cleanContactName(contactName, adhigaramName) {
       }
     }
     if (isSubstringMatch) break;
-  }  
+  }
   // If there's an exact match in the name parts, return "No name found"
   if (isSubstringMatch) {
     return "No name found";
@@ -205,7 +205,7 @@ function cleanContactName(contactName, adhigaramName) {
   // Clean the contact name by removing unwanted terms and trimming it
   var cleanedName = contactName
     .replace(/\s*-\s*$/, "") // Remove trailing hyphens
-    .replace(/\b(Son|Mob No|Daughter|I will recite|Adhigaram|Will take this Adhikaram|will join)\b/gi, "") // Remove unwanted terms
+    .replace(/\b(Son|Mob No|Daughter|I will recite|Adhigaram|Will take this Adhikaram|will join)\b/g, "") // Remove unwanted terms
     .trim();
   
   Logger.log("Name after cleaning in cleanContactName " + cleanedName);
